@@ -2,16 +2,22 @@
 #include <string.h>
 
 int main() {
-  char mesg[] = "Enter a string: "; /* message to be appeared on the screen */
+  char mesg[] = "TODO: "; /* message to be appeared on the screen */
   char str[80];
-  int row, col;               /* to store the number of rows and *
-                               * the number of colums of the screen */
-  initscr();                  /* start the curses mode */
-  getmaxyx(stdscr, row, col); /* get the number of rows and columns */
-  mvprintw(row / 2, (col - strlen(mesg)) / 2, "%s", mesg);
-  /* print the message at the center of the screen */
-  getstr(str);
-  mvprintw(LINES - 2, 0, "You Entered: %s", str);
+
+  initscr(); /* start the curses mode */
+  noecho();  /* Turn off echo mode*/
+
+  int ch = getch();
+
+  if (ch == 105) {
+    printw("Hello, World\n");
+    getch();
+  } else {
+    printw("Hello");
+    getch();
+  }
+  refresh();
   getch();
   endwin();
 
